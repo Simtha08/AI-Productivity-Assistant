@@ -63,7 +63,7 @@ ACTION_ITEMS: [{"task":"...","owner":"...","deadline":"..."}]`,
     );
     if (!raw) return;
     const match = raw.match(/ACTION_ITEMS:\s*(\[[\s\S]*\])/);
-    if (match) {
+    if (match?.[1]) {
       try {
         setItems(JSON.parse(match[1]) as ActionItem[]);
       } catch {
