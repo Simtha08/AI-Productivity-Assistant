@@ -12,7 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChatRouteImport } from './routes/chat'
 import { Route as EmailRouteImport } from './routes/email'
+import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as MarketingRouteImport } from './routes/marketing'
 import { Route as MeetingsRouteImport } from './routes/meetings'
+import { Route as PlannerRouteImport } from './routes/planner'
+import { Route as RepliesRouteImport } from './routes/replies'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,9 +33,29 @@ const EmailRoute = EmailRouteImport.update({
   path: '/email',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InventoryRoute = InventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingRoute = MarketingRouteImport.update({
+  id: '/marketing',
+  path: '/marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MeetingsRoute = MeetingsRouteImport.update({
   id: '/meetings',
   path: '/meetings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlannerRoute = PlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RepliesRoute = RepliesRouteImport.update({
+  id: '/replies',
+  path: '/replies',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -39,34 +63,75 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
   '/email': typeof EmailRoute
+  '/inventory': typeof InventoryRoute
+  '/marketing': typeof MarketingRoute
   '/meetings': typeof MeetingsRoute
+  '/planner': typeof PlannerRoute
+  '/replies': typeof RepliesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
   '/email': typeof EmailRoute
+  '/inventory': typeof InventoryRoute
+  '/marketing': typeof MarketingRoute
   '/meetings': typeof MeetingsRoute
+  '/planner': typeof PlannerRoute
+  '/replies': typeof RepliesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/chat': typeof ChatRoute
   '/email': typeof EmailRoute
+  '/inventory': typeof InventoryRoute
+  '/marketing': typeof MarketingRoute
   '/meetings': typeof MeetingsRoute
+  '/planner': typeof PlannerRoute
+  '/replies': typeof RepliesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/chat' | '/email' | '/meetings'
+  fullPaths:
+    | '/'
+    | '/chat'
+    | '/email'
+    | '/inventory'
+    | '/marketing'
+    | '/meetings'
+    | '/planner'
+    | '/replies'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/chat' | '/email' | '/meetings'
-  id: '__root__' | '/' | '/chat' | '/email' | '/meetings'
+  to:
+    | '/'
+    | '/chat'
+    | '/email'
+    | '/inventory'
+    | '/marketing'
+    | '/meetings'
+    | '/planner'
+    | '/replies'
+  id:
+    | '__root__'
+    | '/'
+    | '/chat'
+    | '/email'
+    | '/inventory'
+    | '/marketing'
+    | '/meetings'
+    | '/planner'
+    | '/replies'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChatRoute: typeof ChatRoute
   EmailRoute: typeof EmailRoute
+  InventoryRoute: typeof InventoryRoute
+  MarketingRoute: typeof MarketingRoute
   MeetingsRoute: typeof MeetingsRoute
+  PlannerRoute: typeof PlannerRoute
+  RepliesRoute: typeof RepliesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -92,11 +157,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmailRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inventory': {
+      id: '/inventory'
+      path: '/inventory'
+      fullPath: '/inventory'
+      preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing': {
+      id: '/marketing'
+      path: '/marketing'
+      fullPath: '/marketing'
+      preLoaderRoute: typeof MarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/meetings': {
       id: '/meetings'
       path: '/meetings'
       fullPath: '/meetings'
       preLoaderRoute: typeof MeetingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planner': {
+      id: '/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof PlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/replies': {
+      id: '/replies'
+      path: '/replies'
+      fullPath: '/replies'
+      preLoaderRoute: typeof RepliesRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -106,7 +199,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChatRoute: ChatRoute,
   EmailRoute: EmailRoute,
+  InventoryRoute: InventoryRoute,
+  MarketingRoute: MarketingRoute,
   MeetingsRoute: MeetingsRoute,
+  PlannerRoute: PlannerRoute,
+  RepliesRoute: RepliesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

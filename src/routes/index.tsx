@@ -106,6 +106,9 @@ function Dashboard() {
     { label: "Meetings Summarized", value: stats.meetings },
     { label: "Customer Conversations", value: stats.conversations },
     { label: "Promotions Created", value: stats.promotions },
+    { label: "Inventory Checks", value: stats.inventory },
+    { label: "Daily Plans Created", value: stats.planner },
+    { label: "Quick Replies Drafted", value: stats.replies },
   ];
 
   return (

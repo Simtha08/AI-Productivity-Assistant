@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export type StatKey = "emails" | "meetings" | "conversations" | "promotions";
+export type StatKey = "emails" | "meetings" | "conversations" | "promotions" | "inventory" | "planner" | "replies";
 
 const KEY = "ssb-stats";
 const EMPTY: Record<StatKey, number> = {
@@ -8,6 +8,9 @@ const EMPTY: Record<StatKey, number> = {
   meetings: 0,
   conversations: 0,
   promotions: 0,
+  inventory: 0,
+  planner: 0,
+  replies: 0,
 };
 
 function read(): Record<StatKey, number> {
